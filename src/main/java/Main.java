@@ -1,5 +1,6 @@
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import javax.annotation.Nonnull;
@@ -11,7 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Main extends ListenerAdapter {
     public static void main(String[] args) throws LoginException {
         //Logs into the bot using it's token
-        JDA jda = JDABuilder.createDefault("NzY4MTk0MDY0OTYwNDU0NjY3.X486eQ.oGxdDrgsEQEae_Ht1hqw_phSOCo").addEventListeners(new Main()).build();
+        JDA jda = JDABuilder.createDefault("NzY4MTk0MDY0OTYwNDU0NjY3.X486eQ.p3Yeq7XZrWfipzc9MTrGYoLfZWc").setActivity(Activity.playing("Making Bugs")).addEventListeners(new Main()).build();
     }
 
     //Listens for messages in any channel the bot can see
@@ -52,16 +53,25 @@ public class Main extends ListenerAdapter {
 
         else if (event.getMessage().getContentRaw().equals(">start")) {
             //Instantiating Variables
-            StringBuilder message = null;
+            StringBuilder messageBuilder = null;
 
             //Clearing the string builder
-            message = new StringBuilder();
+            messageBuilder = new StringBuilder();
 
             //Building starting message
-            message.append("**Select the dice you would like to roll:**").append("\n").append(":one: : d4").append("\n").append(":two: : d6").append("\n").append(":three: : d8").append("\n").append(":four: : d10").append("\n").append(":five: : d12").append("\n").append(":six: : d20").append("\n").append(":seven: : d100").append("\n\n").append(":white_check_mark: : Roll");
+            messageBuilder.append("**Select the dice you would like to roll:**").append("\n").append(":one: : d4").append("\n").append(":two: : d6").append("\n").append(":three: : d8").append("\n").append(":four: : d10").append("\n").append(":five: : d12").append("\n").append(":six: : d20").append("\n").append(":seven: : d100").append("\n\n").append(":white_check_mark: : Roll");
 
             //Sending the message
-            event.getChannel().sendMessage(message).queue();
+            event.getChannel().sendMessage(messageBuilder).queue(message -> {
+                message.addReaction("\u0031\uFE0F\u20E3").queue();
+                message.addReaction("\u0032\uFE0F\u20E3").queue();
+                message.addReaction("\u0033\uFE0F\u20E3").queue();
+                message.addReaction("\u0034\uFE0F\u20E3").queue();
+                message.addReaction("\u0035\uFE0F\u20E3").queue();
+                message.addReaction("\u0036\uFE0F\u20E3").queue();
+                message.addReaction("\u0037\uFE0F\u20E3").queue();
+                message.addReaction("\u2705").queue();
+            });
         }
     }
 
