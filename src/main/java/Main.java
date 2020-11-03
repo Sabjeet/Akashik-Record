@@ -2,21 +2,22 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-
 import javax.annotation.Nonnull;
 import javax.security.auth.login.LoginException;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Main extends ListenerAdapter {
     public static void main(String[] args) throws LoginException {
         //Logs into the bot using it's token
-        JDA jda = JDABuilder.createDefault("NzY4MTk0MDY0OTYwNDU0NjY3.X486eQ.JjIAZp10S3xNCmL38TDGm_Sm_Yo").addEventListeners(new Main()).build();
+        JDA jda = JDABuilder.createDefault("NzY4MTk0MDY0OTYwNDU0NjY3.X486eQ.oGxdDrgsEQEae_Ht1hqw_phSOCo").addEventListeners(new Main()).build();
     }
 
     //Listens for messages in any channel the bot can see
     @Override
     public void onMessageReceived(@Nonnull MessageReceivedEvent event) {
+        //Generates stats for a character between 75 and 85
         if (event.getMessage().getContentRaw().equals(">stats")) {
             //Instantiating Variables
             int[] rolls;
@@ -30,7 +31,7 @@ public class Main extends ListenerAdapter {
                 //Clearing the string builder
                 message = new StringBuilder();
                 //Beginning the message array
-                message.append("__Generated Stat Array (4d6 drop lowest):__\n");
+                message.append("Threaded: Generated Stat Array (4d6 drop lowest):\n");
                 //Generates the random rolls
                 for (int i = 0; i < 6; i++) {
                     rolls = rollStats();
@@ -48,6 +49,8 @@ public class Main extends ListenerAdapter {
             //Prints the stat array
             event.getChannel().sendMessage(message).queue();
         }
+
+
     }
 
     //Rolls 4d6 and returns the largest 3 numbers and the total in an array
@@ -57,8 +60,7 @@ public class Main extends ListenerAdapter {
 
         //Generates 4 rolls
         for (int i = 0; i < 4; i++) {
-            Random rand = new Random();
-            rolls[i] = rand.nextInt((6 - 1) + 1) + 1;
+            rolls[i] = rollDie(6);
         }
 
         //Sorts the array from smallest to largest
@@ -71,5 +73,17 @@ public class Main extends ListenerAdapter {
 
         //Returns the array of rolls
         return rolls;
+    }
+
+    //Rolls a dice of specified sides
+    private int rollDie(int sides) {
+        //Variable declaration
+       int roll;
+
+       //Rolling the die
+        roll = ThreadLocalRandom.current().nextInt(1, sides);
+
+        //Returning the rolled number
+        return roll;
     }
 }
