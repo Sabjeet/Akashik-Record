@@ -2,17 +2,23 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import javax.annotation.Nonnull;
 import javax.security.auth.login.LoginException;
 import java.util.Arrays;
-import java.util.Random;
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main extends ListenerAdapter {
+    //Global variables
+    private boolean menuOneFlag = false;
+    private String currentUser = null;
+    private int numberOfSelections = 0;
+
     public static void main(String[] args) throws LoginException {
         //Logs into the bot using it's token
-        JDA jda = JDABuilder.createDefault("NzY4MTk0MDY0OTYwNDU0NjY3.X486eQ.p3Yeq7XZrWfipzc9MTrGYoLfZWc").setActivity(Activity.playing("Making Bugs")).addEventListeners(new Main()).build();
+        JDA jda = JDABuilder.createDefault("NzY4MTk0MDY0OTYwNDU0NjY3.X486eQ.epp1aUBMMMz1gzlGeFbuLdhjeAY").setActivity(Activity.playing("Making Bugs")).addEventListeners(new Main()).build();
     }
 
     //Listens for messages in any channel the bot can see
@@ -51,6 +57,7 @@ public class Main extends ListenerAdapter {
             event.getChannel().sendMessage(message).queue();
         }
 
+        //Starts rolling gui
         else if (event.getMessage().getContentRaw().equals(">start")) {
             //Instantiating Variables
             StringBuilder messageBuilder = null;
@@ -72,6 +79,28 @@ public class Main extends ListenerAdapter {
                 message.addReaction("\u0037\uFE0F\u20E3").queue();
                 message.addReaction("\u2705").queue();
             });
+        }
+    }
+
+    //Checks for reactions added
+    @Override
+    public void onMessageReactionAdd(@Nonnull MessageReactionAddEvent event) {
+
+        //Checks for the white check mark reaction
+        if (event.getReactionEmote().getAsCodepoints().equals("U+2705")) {
+            //Checks to see if the user reacting is the bot
+            if (!Objects.requireNonNull(event.getMember()).getUser().equals(event.getJDA().getSelfUser())){
+                //Check to see that the message reacted to is the bots
+                if (event.getChannel().retrieveMessageById(event.getMessageId()).complete().getAuthor().equals(event.getJDA().getSelfUser())){
+                    //Case for the first menu
+                    if (!menuOneFlag){
+                        menuOneFlag = true;
+                        currentUser = event.getUserId();
+                        System.out.println(event.getReaction().getCount());
+//                        numberOfSelections = event.getReaction().getCount();
+                    }
+                }
+            }
         }
     }
 
