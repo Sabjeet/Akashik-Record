@@ -31,7 +31,7 @@ public class Main extends ListenerAdapter {
                 //Clearing the string builder
                 message = new StringBuilder();
                 //Beginning the message array
-                message.append("Threaded: Generated Stat Array (4d6 drop lowest):\n");
+                message.append("Generated Stat Array (4d6 drop lowest):\n");
                 //Generates the random rolls
                 for (int i = 0; i < 6; i++) {
                     rolls = rollStats();
@@ -50,7 +50,19 @@ public class Main extends ListenerAdapter {
             event.getChannel().sendMessage(message).queue();
         }
 
+        else if (event.getMessage().getContentRaw().equals(">start")) {
+            //Instantiating Variables
+            StringBuilder message = null;
 
+            //Clearing the string builder
+            message = new StringBuilder();
+
+            //Building starting message
+            message.append("**Select the dice you would like to roll:**").append("\n").append(":one: : d4").append("\n").append(":two: : d6").append("\n").append(":three: : d8").append("\n").append(":four: : d10").append("\n").append(":five: : d12").append("\n").append(":six: : d20").append("\n").append(":seven: : d100").append("\n\n").append(":white_check_mark: : Roll");
+
+            //Sending the message
+            event.getChannel().sendMessage(message).queue();
+        }
     }
 
     //Rolls 4d6 and returns the largest 3 numbers and the total in an array
