@@ -8,9 +8,10 @@ sourceCompatibility = 1.8
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    compile 'com.jagrosh:jda-utilities:2.1'
+    compile 'com.jagrosh:jda-utilities:3.0.5'
     compile 'net.dv8tion:JDA:4.2.0_214'
 }
