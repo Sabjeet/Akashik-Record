@@ -1,4 +1,5 @@
 import Commands.HelloCommand;
+import Commands.ListCondiditonsCommand;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
 import com.jagrosh.jdautilities.examples.command.PingCommand;
@@ -37,7 +38,8 @@ public class Bot extends ListenerAdapter{
         //Adding new Commanded
         client.addCommands(
                 new PingCommand(),
-                new HelloCommand(waiter)
+                new HelloCommand(waiter),
+                new ListCondiditonsCommand(waiter)
         );
 
         //Setting up the bot account
