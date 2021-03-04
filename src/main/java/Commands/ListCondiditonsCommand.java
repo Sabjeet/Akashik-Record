@@ -37,19 +37,19 @@ public class ListCondiditonsCommand extends Command {
                 "The charmer has Advantage on any ability check to interact socially with the creature.",
                 false);
         embedBuilder.addField("Deafened",
-                "A deafened creature can’t hear and fails any ability check that requires hearing.",
+                "A deafened creature can't hear and fails any ability check that requires hearing.",
                 false);
         embedBuilder.addField("Frightened",
                 "A frightened creature has Disadvantage on ability checks and attack rolls while the source of the fear effect is within line of sight.\n" +
                         "The creature cannot willingly move closer to the source of the fear effect.",
                 false);
         embedBuilder.addField("Grappled",
-                "A grappled creature’s Speed becomes 0, and cannot benefit from any bonus to Speed.\n" +
+                "A grappled creature's Speed becomes 0, and cannot benefit from any bonus to Speed.\n" +
                         "The condition ends if the grappler becomes incapacitated.\n" +
                         "The condition also ends if an effect removes the grappled creature from the reach of the grappler or grappling effect.",
                 false);
         embedBuilder.addField("Incapacitated",
-                "An incapacitated creature can’t take actions or reactions",
+                "An incapacitated creature can't take actions or reactions",
                 false);
         embedBuilder.addField("Invisible",
                 "An invisible creature cannot be seen except by magic or a special sense but can be detected if it makes noise.\n" +
@@ -58,14 +58,14 @@ public class ListCondiditonsCommand extends Command {
                         "An invisible creature has Advantage on attack rolls.",
                 false);
         embedBuilder.addField("Paralyzed",
-                "A paralyzed creature is incapacitated and can’t move or speak.\n" +
+                "A paralyzed creature is incapacitated and can't move or speak.\n" +
                         "The creature automatically fails STR and DEX Saving Throws.\n" +
                         "Attacks rolls against the creature have Advantage.\n" +
                         "Any attack that hits the creature is a critical hit if the attacker is within 5 feet.",
                 false);
         embedBuilder.addField("Petrified",
                 "A petrified creature is transformed along with any non-magical objects on its person into a solid inanimate substance. Its weight increases by a factor of 10 and it ceases aging.\n" +
-                        "The creature is incapacitated and can’t move or speak and is unaware of its surroundings.\n" +
+                        "The creature is incapacitated and can't move or speak and is unaware of its surroundings.\n" +
                         "The creature automatically fails STR and DEX Saving Throws.\n" +
                         "Attacks rolls against the creature have Advantage.\n" +
                         "The creature has resistance to all damage.\n" +
@@ -75,23 +75,23 @@ public class ListCondiditonsCommand extends Command {
                 "A poisoned creature has Disadvantage on attack rolls and ability checks",
                 false);
         embedBuilder.addField("Prone",
-                "A prone creature’s only movement is to crawl.\n" +
+                "A prone creature's only movement is to crawl.\n" +
                         "The creature has Disadvantage on all attack rolls.\n" +
                         "An attack against the creature has Advantage if the attacker is within 5 feet. Otherwise the attacker has Disadvantage.\n" +
-                        "Standing up from prone costs one half the creature’s speed.",
+                        "Standing up from prone costs one half the creature's speed.",
                 false);
         embedBuilder.addField("Restrained",
-                "A restrained creature’s speed is zero and it can’t benefit from any bonuses to Speed.\n" +
+                "A restrained creature's speed is zero and it can't benefit from any bonuses to Speed.\n" +
                         "Attack rolls against the creature have Advantage.\n" +
-                        "The creature’s attack rolls have Disadvantage.",
+                        "The creature's attack rolls have Disadvantage.",
                 false);
         embedBuilder.addField("Stunned",
-                "A stunned creature is incapacitated, can’t move, and only speaks falteringly.\n" +
+                "A stunned creature is incapacitated, can't move, and only speaks falteringly.\n" +
                         "The creature automatically fails STR and DEX saving throws.\n" +
                         "Attacks rolls against the creature have Advantage.",
                 false);
         embedBuilder.addField("Unconscious",
-                "An unconscious creature is incapacitated and can’t move or speak and is unaware of its surroundings.\n" +
+                "An unconscious creature is incapacitated and can't move or speak and is unaware of its surroundings.\n" +
                         "The creature drops whatever it is holding and falls prone.\n" +
                         "The creature automatically fails STR and DEX saving throws.\n" +
                         "Attacks rolls against the creature have Advantage.\n" +
@@ -107,8 +107,8 @@ public class ListCondiditonsCommand extends Command {
                         "**Level 5:** Speed reduced to 0\n" +
                         "**Level 6:** Death\n" +
                         "\n" +
-                        "An effect that removes Exhaustion reduces its level as specified, and all effects of Exhaustion end if a creature’s exhaustion level is reduced below 1.\n" +
-                        "Finishing a Long Rest reduces a creature’s exhaustion level by 1, so long as that creature has ingested some food and water.",
+                        "An effect that removes Exhaustion reduces its level as specified, and all effects of Exhaustion end if a creature's exhaustion level is reduced below 1.\n" +
+                        "Finishing a Long Rest reduces a creature's exhaustion level by 1, so long as that creature has ingested some food and water.",
                 false);
     }
 
